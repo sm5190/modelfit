@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyd
+*.so
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+dist/
+build/
+*.egg-info/
+
+# Environments
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+
+# Editors
+.idea/
+.vscode/*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Runtime data
+data/
+artifacts/
+uploads/
+reports/
+mlruns/
+*.sqlite3
+
+# Model data
+models/
+*.safetensors
+*.gguf
+*.bin
+
+# Kubernetes / local secrets
+*.secret.yaml
+secrets/

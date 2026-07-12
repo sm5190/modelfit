@@ -1,0 +1,25 @@
+models:
+  microsoft/Phi-4-mini-instruct:
+    license: MIT
+    classification: permissive_open_weight
+
+  Qwen/Qwen3-8B:
+    license: Apache-2.0
+    classification: permissive_open_weight
+
+  google/gemma-3-12b-it:
+    license: Gemma
+    classification: custom_open_weight
+    requires_acceptance: true
+
+  Qwen/Qwen2.5-VL-7B-Instruct:
+    license: Apache-2.0
+    classification: permissive_open_weight
+
+  prometheus-eval/prometheus-7b-v2.0:
+    license: Apache-2.0
+    classification: permissive_open_weight_with_data_caveat
+
+  mistralai/Mistral-Small-3.1-24B-Instruct-2503:
+    license: Apache-2.0
+    classification: permissive_open_weight

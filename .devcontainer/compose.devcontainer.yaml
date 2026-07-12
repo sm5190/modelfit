@@ -1,0 +1,32 @@
+services:
+  dev:
+    build:
+      context: .
+      dockerfile: .devcontainer/Dockerfile
+
+    volumes:
+      - .:/workspace:cached
+
+    command: sleep infinity
+
+    env_file:
+      - .env
+
+    environment:
+      MODELFIT_DATABASE_URL: postgresql+asyncpg://${MODELFIT_POSTGRES_USER}:${MODELFIT_POSTGRES_PASSWORD}@postgres:5432/${MODELFIT_POSTGRES_DB}
+      MODELFIT_REDIS_URL: redis://redis:6379/0
+      MODELFIT_MINIO_ENDPOINT: minio:9000
+      MODELFIT_MCP_DOCUMENT_URL: http://mcp-document:9101/mcp
+      MODELFIT_MCP_IMAGE_URL: http://mcp-image:9102/mcp
+
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      minio:
+        condition: service_started
+      mcp-document:
+        condition: service_started
+      mcp-image:
+        condition: service_started

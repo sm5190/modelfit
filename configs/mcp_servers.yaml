@@ -1,0 +1,31 @@
+servers:
+  document:
+    display_name: Document tools
+    transport: http
+    url: ${MODELFIT_MCP_DOCUMENT_URL}
+    enabled: true
+    trust_level: internal
+    allowed_tools:
+      - document_server_health
+      - document_describe_artifact
+      - document_extract_text
+
+  image:
+    display_name: Image tools
+    transport: http
+    url: ${MODELFIT_MCP_IMAGE_URL}
+    enabled: true
+    trust_level: internal
+    allowed_tools:
+      - image_server_health
+      - image_describe_artifact
+
+  web:
+    display_name: Web tools
+    transport: http
+    url: ${MODELFIT_MCP_WEB_URL}
+    enabled: false
+    trust_level: external_read
+    allowed_tools:
+      - web_server_health
+      - web_search

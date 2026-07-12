@@ -1,0 +1,24 @@
+rubric_id: general_communication_v1
+version: 1.0.0
+scale:
+  minimum: 1
+  maximum: 5
+criteria:
+  clarity:
+    description: Is the response easy for the intended audience to understand?
+    weight: 1.0
+  directness:
+    description: Does the response address the request without unnecessary detours?
+    weight: 1.0
+  jargon_control:
+    description: Does it avoid unexplained technical language?
+    weight: 0.8
+  conciseness:
+    description: Is the response compact without omitting essential information?
+    weight: 0.8
+  tone_fit:
+    description: Does the tone match the requested audience and situation?
+    weight: 0.8
+  actionability:
+    description: Can the user act on the response with minimal editing?
+    weight: 1.0

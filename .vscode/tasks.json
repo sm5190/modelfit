@@ -1,0 +1,30 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Setup project",
+      "type": "shell",
+      "command": "uv sync --all-groups && uv run pre-commit install",
+      "problemMatcher": []
+    },
+    {
+      "label": "Start infrastructure",
+      "type": "shell",
+      "command": "docker compose up -d postgres redis minio",
+      "problemMatcher": []
+    },
+    {
+      "label": "Run tests",
+      "type": "shell",
+      "command": "uv run pytest",
+      "group": "test",
+      "problemMatcher": []
+    },
+    {
+      "label": "Run quality checks",
+      "type": "shell",
+      "command": "uv run ruff check . && uv run mypy src && uv run bandit -r src",
+      "problemMatcher": []
+    }
+  ]
+}

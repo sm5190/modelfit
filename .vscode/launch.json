@@ -1,0 +1,19 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "ModelFit API",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "uvicorn",
+      "args": ["modelfit.api.main:app", "--reload", "--port", "8000"]
+    },
+    {
+      "name": "ModelFit UI",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "streamlit",
+      "args": ["run", "src/modelfit/ui/app.py", "--server.port", "8501"]
+    }
+  ]
+}

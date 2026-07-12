@@ -1,0 +1,60 @@
+models:
+  phi_4_mini:
+    model_id: microsoft/Phi-4-mini-instruct
+    role: candidate
+    modalities: [text]
+    enabled: true
+    license:
+      type: permissive
+      identifier: MIT
+      requires_acceptance: false
+
+  qwen3_8b:
+    model_id: Qwen/Qwen3-8B
+    role: candidate
+    modalities: [text]
+    enabled: true
+    license:
+      type: permissive
+      identifier: Apache-2.0
+      requires_acceptance: false
+
+  gemma_3_12b:
+    model_id: google/gemma-3-12b-it
+    role: candidate
+    modalities: [text, image]
+    enabled: false
+    license:
+      type: custom_open_weight
+      identifier: Gemma
+      requires_acceptance: true
+
+  qwen_2_5_vl:
+    model_id: Qwen/Qwen2.5-VL-7B-Instruct
+    role: candidate
+    modalities: [text, image]
+    enabled: true
+    license:
+      type: permissive
+      identifier: Apache-2.0
+      requires_acceptance: false
+
+  prometheus_2:
+    model_id: prometheus-eval/prometheus-7b-v2.0
+    role: primary_judge
+    modalities: [text]
+    enabled: true
+    license:
+      type: permissive_with_data_caveat
+      identifier: Apache-2.0
+      requires_acceptance: false
+
+  mistral_escalation:
+    model_id: mistralai/Mistral-Small-3.1-24B-Instruct-2503
+    role: escalation_judge
+    modalities: [text, image]
+    enabled: true
+    license:
+      type: permissive
+      identifier: Apache-2.0
+      requires_acceptance: false

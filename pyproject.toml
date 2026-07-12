@@ -1,0 +1,105 @@
+[project]
+name = "modelfit"
+version = "0.1.0"
+description = "A business-friendly LLM evaluation sandbox."
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "alembic>=1.15",
+  "asyncpg>=0.30",
+  "celery[redis]>=5.5",
+  "fastapi>=0.115",
+  "httpx>=0.28",
+  "langgraph>=0.4",
+  "langchain-mcp-adapters>=0.1,<1",
+  "mcp[cli]>=1.28,<2",
+  "minio>=7.2",
+  "openai>=1.75",
+  "pydantic>=2.10",
+  "pydantic-settings>=2.8",
+  "pyyaml>=6.0",
+  "redis>=6.0",
+  "sqlalchemy[asyncio]>=2.0",
+  "streamlit>=1.44",
+  "structlog>=25.1",
+  "tenacity>=9.0",
+  "uvicorn[standard]>=0.34",
+]
+
+[dependency-groups]
+dev = [
+  "bandit>=1.8",
+  "pip-audit>=2.9",
+  "mypy>=1.15",
+  "pre-commit>=4.2",
+  "pytest>=8.3",
+  "pytest-asyncio>=0.26",
+  "pytest-cov>=6.0",
+  "ruff>=0.11",
+  "types-pyyaml>=6.0",
+]
+documents = [
+  "docling>=2.30",
+]
+evaluation = [
+  "ragas>=0.3",
+]
+mlops = [
+  "mlflow>=3.0",
+]
+
+[project.scripts]
+modelfit-api = "modelfit.api.cli:main"
+modelfit-worker = "modelfit.worker.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/modelfit"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --strict-markers"
+asyncio_mode = "auto"
+markers = [
+  "integration: tests requiring containers or external services",
+  "gpu: tests requiring a GPU model server",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "ASYNC", "RUF"]
+ignore = ["B008"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+warn_unused_configs = true
+plugins = ["pydantic.mypy"]
+exclude = ["migrations/"]
+
+[tool.coverage.run]
+source = ["src/modelfit"]
+branch = true
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
+
+
+[[tool.mypy.overrides]]
+module = ["celery", "celery.*"]
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = ["modelfit.worker.tasks"]
+disallow_untyped_decorators = false
