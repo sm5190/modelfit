@@ -35,8 +35,8 @@ reports/
 mlruns/
 *.sqlite3
 
-# Model data
-models/
+# Downloaded model data at the repository root
+/models/
 *.safetensors
 *.gguf
 *.bin
