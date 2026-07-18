@@ -16,8 +16,8 @@ from modelfit.core.config import get_settings
 def create_engine(database_url: str | None = None) -> AsyncEngine:
     """Create an asynchronous SQLAlchemy engine.
 
-    An explicit URL can be supplied by tests and migration tooling. Application
-    code normally uses the configured ModelFit database URL.
+    Application code normally uses the configured database URL.
+    Tests and migration tools may provide a different URL explicitly.
     """
     resolved_database_url = database_url or get_settings().database_url
 
@@ -32,7 +32,7 @@ def create_engine(database_url: str | None = None) -> AsyncEngine:
 def create_session_factory(
     engine: AsyncEngine,
 ) -> async_sessionmaker[AsyncSession]:
-    """Create a session factory bound to the supplied engine."""
+    """Create asynchronous database sessions bound to an engine."""
     return async_sessionmaker(
         bind=engine,
         class_=AsyncSession,
@@ -45,11 +45,7 @@ def create_session_factory(
 async def session_scope(
     session_factory: async_sessionmaker[AsyncSession],
 ) -> AsyncIterator[AsyncSession]:
-    """Provide a transactional asynchronous database session.
-
-    Successful work is committed. Exceptions trigger a rollback and are
-    propagated to the caller.
-    """
+    """Provide a transactional asynchronous database session."""
     async with session_factory() as session:
         try:
             yield session

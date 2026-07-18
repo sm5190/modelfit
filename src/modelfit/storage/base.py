@@ -1,4 +1,4 @@
-"""Shared SQLAlchemy declarative base and model mixins."""
+"""Shared SQLAlchemy base classes and model mixins."""
 
 from datetime import datetime
 from uuid import UUID, uuid4
@@ -16,13 +16,13 @@ NAMING_CONVENTION: dict[str, str] = {
 
 
 class Base(DeclarativeBase):
-    """Base class for all ModelFit SQLAlchemy models."""
+    """Base class inherited by every ModelFit database model."""
 
     metadata = MetaData(naming_convention=NAMING_CONVENTION)
 
 
 class UUIDPrimaryKeyMixin:
-    """Provide a generated UUID primary key."""
+    """Add a generated UUID primary key to a database model."""
 
     id: Mapped[UUID] = mapped_column(
         Uuid(as_uuid=True),
@@ -32,7 +32,7 @@ class UUIDPrimaryKeyMixin:
 
 
 class TimestampMixin:
-    """Provide creation and modification timestamps."""
+    """Add creation and modification timestamps to a database model."""
 
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),
