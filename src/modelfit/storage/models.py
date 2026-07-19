@@ -30,7 +30,7 @@ class EvaluationSession(UUIDPrimaryKeyMixin, TimestampMixin, Base):
     __table_args__ = (
         CheckConstraint(
             "status IN ('draft', 'active', 'completed', 'failed')",
-            name="valid_status",
+            name="ck_evaluation_sessions_valid_status",
         ),
         Index(
             "ix_evaluation_sessions_status_created_at",
@@ -136,7 +136,7 @@ class EvaluationRun(UUIDPrimaryKeyMixin, TimestampMixin, Base):
     __table_args__ = (
         CheckConstraint(
             ("status IN ('pending', 'running', 'completed', 'partial', 'failed', 'cancelled')"),
-            name="valid_status",
+            name="ck_evaluation_runs_valid_status",
         ),
         Index(
             "ix_evaluation_runs_session_status",
@@ -197,7 +197,7 @@ class ModelRun(UUIDPrimaryKeyMixin, TimestampMixin, Base):
     __table_args__ = (
         CheckConstraint(
             ("status IN ('pending', 'running', 'completed', 'failed', 'timeout')"),
-            name="valid_status",
+            name="ck_model_runs_valid_status",
         ),
         CheckConstraint(
             "input_tokens IS NULL OR input_tokens >= 0",
