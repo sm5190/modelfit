@@ -5,47 +5,47 @@ description = "A business-friendly LLM evaluation sandbox."
 readme = "README.md"
 requires-python = ">=3.12,<3.13"
 dependencies = [
-  "alembic>=1.15",
-  "asyncpg>=0.30",
-  "celery[redis]>=5.5",
-  "fastapi>=0.115",
-  "httpx>=0.28",
-  "langgraph>=0.4",
-  "langchain-mcp-adapters>=0.1,<1",
-  "mcp[cli]>=1.28,<2",
-  "minio>=7.2",
-  "openai>=1.75",
-  "pydantic>=2.10",
-  "pydantic-settings>=2.8",
-  "pyyaml>=6.0",
-  "redis>=6.0",
-  "sqlalchemy[asyncio]>=2.0",
-  "streamlit>=1.44",
-  "structlog>=25.1",
-  "tenacity>=9.0",
-  "uvicorn[standard]>=0.34",
+  "alembic>=1.18.5",
+  "asyncpg>=0.31.0",
+  "celery[redis]>=5.6.3",
+  "fastapi>=0.139.2",
+  "httpx>=0.28.1",
+  "langgraph>=1.2.9",
+  "langchain-mcp-adapters>=0.3.0,<1",
+  "mcp[cli]>=1.28.1,<2",
+  "minio>=7.2.20",
+  "openai>=2.46.0",
+  "pydantic>=2.13.4",
+  "pydantic-settings>=2.14.2",
+  "pyyaml>=6.0.3",
+  "redis>=8.0.1",
+  "sqlalchemy[asyncio]>=2.0.51",
+  "streamlit>=1.59.2",
+  "structlog>=26.1.0",
+  "tenacity>=9.1.4",
+  "uvicorn[standard]>=0.51.0",
 ]
 
 [dependency-groups]
 dev = [
-  "bandit>=1.8",
-  "pip-audit>=2.9",
-  "mypy>=1.15",
-  "pre-commit>=4.2",
-  "pytest>=8.3",
-  "pytest-asyncio>=0.26",
-  "pytest-cov>=6.0",
-  "ruff>=0.11",
-  "types-pyyaml>=6.0",
+  "bandit>=1.9.4",
+  "pip-audit>=2.10.1",
+  "mypy>=2.3.0",
+  "pre-commit>=4.6.0",
+  "pytest>=9.1.1",
+  "pytest-asyncio>=1.4.0",
+  "pytest-cov>=7.1.0",
+  "ruff>=0.15.22",
+  "types-pyyaml>=6.0.12.20260518",
 ]
 documents = [
-  "docling>=2.30",
+  "docling>=2.113.0",
 ]
 evaluation = [
-  "ragas>=0.3",
+  "ragas>=0.4.3",
 ]
 mlops = [
-  "mlflow>=3.0",
+  "mlflow>=3.14.0",
 ]
 
 [project.scripts]
